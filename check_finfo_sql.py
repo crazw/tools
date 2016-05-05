@@ -255,7 +255,7 @@ class MysqlPython(object):
             raise e
         finally:
             self.__close()
-            # End def create
+    # End def create
 
 
 def md5hex(word):
@@ -301,6 +301,10 @@ def create_tmp_table(con):
                     ) ENGINE=MyISAM DEFAULT CHARSET=utf8;"""
 
     con.opt_table(create_sql)
+
+    print '===> 创建索引'
+    create_index = 'ALTER TABLE `test_check_finfo` ADD INDEX `finfo` (`finfo`)'
+    con.opt_table(create_index)
 
 
 def delete_tmp_table(con):
